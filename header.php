@@ -23,13 +23,13 @@
         <a href="<?php echo home_url('/'); ?>"><img src="<?php bloginfo('template_url'); ?>/images/header/site_id.png" alt="<?php bloginfo('name'); ?>" /></a>
       </h1><!-- #site-id end -->
       <div id="utility-group">
-        <nav id="utility-nav">
-          <ul>
-            <li><a href="#">utility-nav_1</a></li>
-            <li><a href="#">utility-nav_2</a></li>
-            <li><a href="#">utility-nav_3</a></li>
-          </ul>
-        </nav><!-- #utility-nav end -->
+<?php
+    wp_nav_menu(array(
+        'container' => 'nav',
+        'container_id' => 'utility-nav',
+        'theme_location' => 'place_utility'
+    ));
+?>
         <div id="header-widget-area">
           <aside class="widget_search">
             <form role="search" id="searchform">
@@ -42,21 +42,13 @@
         </div><!-- #header-widget-area end -->
       </div><!-- #utility-group end -->
     </header><!-- #header end -->
-    <nav id="global-nav">
-      <ul id="menu-global">
-        <li id="menu-item-home" class="menu-item current-menu-item"><a href="#">トップページ</a></li>
-        <li id="menu-item-about" class="menu-item"><a href="#">会社概要</a></li>
-        <li id="menu-item-mall" class="menu-item"><a href="#">モール開発実績</a>
-          <ul class="sub-menu">
-            <li class="menu-item"><a href="#">モール1</a></li>
-            <li class="menu-item"><a href="#">モール2</a></li>
-          </ul>
-        </li>
-        <li id="menu-item-column" class="menu-item"><a href="#">コラム</a></li>
-        <li id="menu-item-inquiry" class="menu-item"><a href="#">お問い合わせ</a></li>
-      </ul><!-- #menu-global end -->
-    </nav><!-- #global-nav end -->
-
+<?php
+    wp_nav_menu(array(
+        'container' => 'nav',
+        'container_id' => 'global-nav',
+        'theme_location' => 'place_global'
+    ));
+?>
 <?php
     if (is_front_page()) :
 ?>
