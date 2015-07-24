@@ -41,3 +41,24 @@ function change_child_pages_shortcode_css() {
     return $url;
 }
 add_filter('child-pages-shortcode-stylesheet', 'change_child_pages_shortcode_css');
+
+// ウィジェット
+register_sidebar(array(
+    'name' => 'サイドバーウィジェットエリア（上）',
+    'id' => 'primary-widget-area',
+    'description' => 'サイドバー上部のウィジェットエリア',
+    'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
+    'after_widget' => '</aside>',
+    'before_title' => '<h1 class="widget-title">',
+    'after_title' => '</h1>'
+));
+
+register_sidebar(array(
+    'name' => 'サイドバーウィジェットエリア（下）',
+    'id' => 'secondary-widget-area',
+    'description' => 'サイドバー下部のウィジェットエリア',
+    'before_widget' => '<aside id="%1$s" class="widget-container %2$s">',
+    'after_widget' => '</aside>',
+    'before_title' => '<h1 class="widget-title">',
+    'after_title' => '</h1>'
+));
