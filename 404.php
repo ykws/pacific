@@ -2,8 +2,8 @@
 <html dir="ltr" lang="ja">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>ページが見つかりませんでした | サイト名</title>
-<link rel="stylesheet" type="text/css" media="all" href="./css/404.css" />
+<title>ページが見つかりませんでした | <?php bloginfo('name'); ?></title>
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/css/404.css" />
 </head>
 <body>
   <div id="outside">
@@ -22,7 +22,7 @@
         <ul>
           <li>アドレスを再入力する。</li>
           <li><a href="javascript:history.back();">前のページに戻る。</a></li>
-          <li><a href="#">メインのサイト</a>に移動して必要な情報を探す。</li>
+          <li><a href="<?php echo home_url('/'); ?>">メインのサイト</a>に移動して必要な情報を探す。</li>
         </ul>
       </div>
     </div>
