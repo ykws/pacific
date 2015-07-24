@@ -59,3 +59,8 @@
     endif;
 ?>
     <section id="contents-body">
+<?php
+    if (!is_front_page() && function_exists('bread_crumb')) :
+        bread_crumb('navi_element=nav&elm_id=bread-crumb');
+    endif;
+?>
