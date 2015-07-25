@@ -22,3 +22,19 @@ if (is_single()) :
 endif;
 ?>
         </article>
+<?php
+if (is_single()) :
+?>
+        <nav class="adjacent_post_links">
+          <ul>
+            <li class="previous">
+              <?php previous_post_link('%link', '%title', true); ?>
+            </li>
+            <li class="next">
+              <?php next_post_link('%link', '%title', true); ?>
+            </li>
+          </ul>
+        </nav>
+<?php
+endif;
+?>
