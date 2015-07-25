@@ -1,6 +1,6 @@
       <section id="sidebar">
         <aside class="rss_link">
-          <a href="#"><img src="<?php bloginfo('template_url'); ?>/images/btn_rss_feed.png" width="250" height="28" alt="RSS" /></a>
+          <?php the_feed_link('<img src="' . get_template_directory_uri() . '/images/btn_rss_feed.png" width="250" height="28" alt="RSS" />'); ?>
         </aside>
         <div id="primary" class="widget-area">
 <?php
