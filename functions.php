@@ -128,3 +128,24 @@ function get_pickup_excerpt($excerpt) {
 function pickup_excerpt_length() {
   return 50;
 }
+
+// カテゴリー画像の表示
+// 1. アイキャッチ画像が設定されている場合は、アイキャッチ画像を使用
+// 2. アイキャッチ画像が設定されていない場合は固定ページで、最上位の固定ページにアイキャッチ画像が設定されている場合は、そのアイキャッチ画像を使用
+// 3. それ以外の場合は、デフォルトの画像を表示
+function the_category_image() {
+  global $post;
+  $image = "";
+
+  if (is_singular() && has_post_thumbnail()) {
+    $image = get_the_post_thumbnail(null, 'category_image', array('id' => 'category_image'));
+  } elseif (is_page() && has_post_thumbnail(array_pop(get_post_ancestors($post)))) {
+    $image = get_the_post_thumbnail(array_pop(get_post_ancestors($post)), 'category_image', array('id' => 'category_image'));
+  }
+
+  if ($image == "") {
+    $src = get_template_directory_uri() . '/images/category/default.jpg';
+    $image = '<img src="' . $src . '" class="attachment-category_image wp-post-image" alt="" id="category_image" />';
+  }
+  echo $image;
+}
