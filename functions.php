@@ -77,3 +77,54 @@ function search_template_redirect() {
 if (isset($_GET['s']) && $_GET['s'] == false) {
   add_action('template_redirect', 'search_template_redirect');
 }
+
+// 抜粋文が自動的に生成される場合に最後に付与される文字列を変更します。
+function cms_excerpt_more() {
+  return ' ...';
+}
+add_filter('excerpt_more', 'cms_excerpt_more');
+
+// 抜粋文が自動敵に生成される場合にデフォルトの文字数を変更します。
+function cms_excerpt_length() {
+  return 120;
+}
+add_filter('excerpt_mblength', 'cms_excerpt_length');
+
+// 固定ページで抜粋文を入力できるようにする。
+add_post_type_support('page', 'excerpt');
+
+// 30文字表示抜粋（自動生成時）表示テンプレートタグの定義
+function the_short_excerpt() {
+  add_filter('excerpt_mblength', 'short_excerpt_length', 11);
+  the_excerpt();
+  remove_filter('excerpt_mblength', 'short_excerpt_length', 11);
+}
+
+function short_excerpt_length() {
+  return 30;
+}
+
+// 50文字表示抜粋表示テンプレートタグの定義
+function the_pickup_excerpt() {
+  add_filter('get_the_excerpt', 'get_pickup_excerpt', 0);
+  add_filter('excerpt_mblength', 'pickup_excerpt_length', 11);
+  the_excerpt();
+  remove_filter('get_the_excerpt', 'get_pickup_excerpt', 0);
+  remove_filter('excerpt_mblength', 'pickup_excerpt_length', 11);
+}
+
+// トップページのピックアップ（モール紹介）部分の抜粋文を切り詰める。
+function get_pickup_excerpt($excerpt) {
+  if ($excerpt) {
+    $excerpt = strip_tags($excerpt);
+    $excerpt_len = mb_strlen($excerpt);
+    if ($excerpt_len > 50) {
+      $excerpt = mb_substr($excerpt, 0, 50) . ' ...';
+    }
+  }
+  return $excerpt;
+}
+
+function pickup_excerpt_length() {
+  return 50;
+}

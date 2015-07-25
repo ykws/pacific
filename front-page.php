@@ -18,7 +18,7 @@ if (have_posts()) :
             <article>
                 <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
                 <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'pickup_thumbnail', array('alt' => the_title_attribute("echo=0"), 'title' => the_title_attribute("echo=0"))); ?></a>
-                <?php the_excerpt(); ?>
+                <?php the_pickup_excerpt(); ?>
 
                 <div class="continue-button">
                     <a href="<?php the_permalink(); ?>">詳しく見る</a>
@@ -53,7 +53,7 @@ if (have_posts()) :
                 <h1 class="update-title"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
                 <time class="entry-date" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time(get_option('date_format')); ?></time>
                 <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('post-thumbnail', array('alt' => the_title_attribute('echo=0'), 'title' => the_title_attribute('echo=0'))); ?></a>
-                <?php the_excerpt(); ?>
+                <?php the_short_excerpt(); ?>
 
                 <span class="link-text"><a href="<?php the_permalink(); ?>">続きを読む</a></span>
             </article>

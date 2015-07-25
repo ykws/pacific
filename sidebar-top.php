@@ -26,7 +26,7 @@ foreach ($sidebar_cat_list as $sidebar_cat_name => $sidebar_cat_num) :
                   <time class="entry-date" datetime="<?php the_time('Y-m-d'); ?>"><?php the_time(get_option('date_format')); ?></time>
                   <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                   <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('small_thumbnail', array('alt' => the_title_attribute('echo=0'), 'title' => the_title_attribute('echo=0'))); ?></a>
-                  <?php the_excerpt(); ?>
+                  <?php the_short_excerpt(); ?>
                 </li>
 <?php
         endwhile;
