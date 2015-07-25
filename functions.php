@@ -62,3 +62,18 @@ register_sidebar(array(
     'before_title' => '<h1 class="widget-title">',
     'after_title' => '</h1>'
 ));
+
+// 検索ワードが未入力または 0 の場合に search.php をテンプレートとして使用する
+function search_template_redirect() {
+  global $wp_query;
+  $wp_query->is_search = true;
+  $wp_query->is_home = false;
+  if (file_exists(TEMPLATEPATH . '/search.php')) {
+    include(TEMPLATEPATH . '/search.php');
+  }
+  exit;
+}
+
+if (isset($_GET['s']) && $_GET['s'] == false) {
+  add_action('template_redirect', 'search_template_redirect');
+}

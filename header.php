@@ -32,12 +32,7 @@
 ?>
         <div id="header-widget-area">
           <aside class="widget_search">
-            <form role="search" id="searchform">
-              <div>
-                <input type="text" id="s" />
-                <input type="submit" id="searchsubmit"/>
-              </div>
-            </form><!-- #searchform end -->
+            <?php echo get_search_form(); ?>
           </aside><!-- .widget_search end -->
         </div><!-- #header-widget-area end -->
       </div><!-- #utility-group end -->
