@@ -18,6 +18,9 @@ if (have_posts()) :
         the_post();
         get_template_part('content-archive');
     endwhile;
+    if (function_exists('page_navi')) :
+        page_navi('elm_class=page-nav&edge_type=span');
+    endif;
 endif;
 ?>
         </div>
